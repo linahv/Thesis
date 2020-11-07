@@ -1,4 +1,12 @@
-function  [RINGopt, alpha1all, S] =alpha1opt(RING)
+function  [RINGopt, alpha1all, S, I] =alpha1opt(RING)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% script by Lina HOUMMI - last edited - Nov. 7th 2020                                                                     %
+% INPUT : -RING, lattice structure                                                                                        %
+%OUTPUT : - RINGopt, lattice of minimised pathlength                                                                      %
+%         - alpha1all, vector gathering the first-order momentum compaction factor of all generated rings                 %
+%         - S, matrix of all generated sextupole sets, to restore all generated lattices                                  %
+%         - I, index of the minimised ring, for easier location within S                                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %MAIN FUNCTION
 ring_fun = RING;
 %Slicing of some elements of the ring, for increases precision, in the sommation of the integral to calculate alpha1
@@ -69,7 +77,7 @@ end
 %Making Q1t matrix
 Q1t=transpose(Q1); % link between the sextupole space and the variable space of constant chromaticities. cf MOGA-Bmad
 
-% Parameters
+% Nonlinear magnets parameters
 marging = 0.1; % relative variation imposed on the sextupole strengths: default = 10%
 
 fprintf('Defining the omega bounds...') % omega, defined in MOGA-Bmad, corresponds to the variables in the space of constant chromaticities
