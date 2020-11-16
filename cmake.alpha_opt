@@ -1,0 +1,22 @@
+set(EXENAME alpha_opt)
+set (SRC_FILES 
+  alpha_opt/alpha_program.f90
+)
+
+set (SRC_DIR
+ alpha_opt/modules
+)
+
+set (LINK_LIBS
+  util_programs
+  bmad
+  xsif
+  xrlf03
+  xrl
+  sim_utils
+  recipes_f-90_LEPP
+  forest
+  fgsl
+  gsl
+  gslcblas
+)
